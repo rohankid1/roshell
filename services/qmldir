@@ -1,0 +1,7 @@
+singleton WallpaperService 1.0 WallpaperService.qml
+singleton VolumeService 1.0 VolumeService.qml
+# singleton NotifService 1.0 NotifService.qml
+singleton ClipboardService 1.0 ClipboardService.qml
+singleton ClockService 1.0 ClockService.qml
+singleton SettingsService 1.0 SettingsService.qml
+singleton ColorGenService 1.0 ColorGenService.qml

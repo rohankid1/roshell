@@ -1,0 +1,3 @@
+singleton WindowState 1.0 WindowState.qml
+
+SettingsWindow 1.0 SettingsWindow.qml
