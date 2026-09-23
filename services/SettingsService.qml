@@ -75,6 +75,26 @@ Singleton {
 
             property JsonObject general: JsonObject {
                 property int borderRadius: 10;
+
+                property JsonObject animations: JsonObject {
+                    property int colorAnimDuration: 250;
+                    property int borderColorAnimDuration: 250;
+                };
+            };
+
+            property JsonObject shell: JsonObject {
+                property JsonObject bar: JsonObject {
+                    property string position: "top";  
+
+                    property JsonObject workspaces: JsonObject {
+                        property bool automaticallyResize: true;
+                        property int maxStaticWorkspaces: 5;
+                    };
+
+                    property JsonObject clock: JsonObject {
+                        property string format: "";
+                    }
+                };
             };
         }
     }
