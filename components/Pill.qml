@@ -83,7 +83,7 @@ Rectangle {
 
         Text {
             text: root.label;
-            color: theme.on_background;
+            color: root.iconColor;
             font.family: root.fontFamily;
             font.pixelSize: 16;
             elide: Text.ElideRight;
