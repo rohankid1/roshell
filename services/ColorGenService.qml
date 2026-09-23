@@ -160,6 +160,10 @@ Singleton {
         property string tertiary_container: "transparent"
         property string tertiary_fixed: "transparent"
         property string tertiary_fixed_dim: "transparent"
+        property string green: "transparent";
+        property string magenta: "transparent";
+        property string blue: "transparent";
+        property string red: "transparent";
     }
 
     component Palette: JsonObject {
