@@ -32,11 +32,6 @@ ShellRoot {
                 color: "transparent";
                 implicitHeight: 50;
 
-                margins {
-                    left: 20;
-                    right: 20;
-                }
-
                 anchors {
                     top: true;
                     left: true;
