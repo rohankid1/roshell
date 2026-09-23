@@ -6,6 +6,7 @@ import QtQuick.Layouts
 import qs
 import qs.services
 import qs.components
+import qs.notifications.services
 import "../utils.js" as Utils
 
 Rectangle {
