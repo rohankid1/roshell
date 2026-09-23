@@ -19,28 +19,6 @@ Item {
         rectY: notifPill.y + 50;
     }
 
-    Popup {
-        id: screenWindow;
-        window: windowAnchor;
-        rectX: screenPill.x;
-        rectY: screenPill.y + 50;
-
-        ColumnLayout {
-            anchors.fill: parent;
-
-            ScreencopyView {
-                Layout.fillWidth: true;
-                Layout.fillHeight: true;
-
-                id: preview;
-
-                live: true;
-                captureSource: Quickshell.screens[0];
-                paintCursor: true;
-            }
-        }
-    }
-
     ColumnLayout {
         anchors.fill: parent;
 
@@ -52,20 +30,6 @@ Item {
             spacing: 10;
 
             Workspaces {}
-
-            Pill {
-                id: screenPill;
-                icon: "airplay";
-                label: "Screen";
-                clickable: true;
-
-                MouseArea {
-                    anchors.fill: parent;
-                    onClicked: () => {
-                        screenWindow.state = true;
-                    }
-                }
-            }
 
             Item {
                 Layout.fillWidth: true;
