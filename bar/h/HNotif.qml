@@ -41,7 +41,7 @@ Rectangle {
     NotificationPopup {
         id: notifPopup;
         w: wAnchor;
-        rectX: root.x;
+        rectX: root.x + 20;
         rectY: root.y + 50;
     }
 
