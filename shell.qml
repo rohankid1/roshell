@@ -15,7 +15,7 @@ ShellRoot {
     id: root;
 
     readonly property var settings: SettingsService.get;
-    readonly property bool isBottom: settings.shell.bar.position.trim().toLowerCase() === "bottom";
+    readonly property bool isVertical: settings.shell.bar.vertical;
 
     WallpaperPicker {}
     SettingsWindow {}
@@ -31,29 +31,9 @@ ShellRoot {
                 monitor: modelData;
             }
 
-            PanelWindow {
-                id: panelwindow;
+            Bar {
+                visible: !root.isVertical;
                 screen: scope.modelData;
-                color: "transparent";
-                implicitHeight: 50;
-
-                anchors {
-                    bottom: root.isBottom;
-                    top: !root.isBottom;
-                    left: true;
-                    right: true;
-                }
-
-                Bar {
-                    id: bar;
-                    anchors.fill: parent;
-                    windowAnchor: panelwindow;
-                }
-
-                WlrLayershell.namespace: "roshell-bar";
-                WlrLayershell.layer: WlrLayer.Bottom;
-                exclusionMode: ExclusionMode.Normal;
-                exclusiveZone: 35;
             }
         }
     }

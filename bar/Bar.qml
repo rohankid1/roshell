@@ -10,37 +10,57 @@ import qs.components
 import qs.services
 import qs.notifications.services
 
-Rectangle {
+PanelWindow {
     id: root;
 
-    required property var windowAnchor;
     property var theme: ColorGenService.md3;
-  
-    color: theme.surface;
+    readonly property var settings: SettingsService.get;
+    readonly property bool isBottom: settings.shell.bar.position.trim().toLowerCase() === "bottom";
 
-    RowLayout {
-        id: row;
+    WlrLayershell.namespace: "roshell-bar";
+    WlrLayershell.layer: WlrLayer.Bottom;
 
+    exclusionMode: ExclusionMode.Normal;
+    exclusiveZone: 35;
+
+    color: "transparent";
+    implicitHeight: 50;
+
+    anchors {
+        bottom: root.isBottom;
+        top: !root.isBottom;
+        left: true;
+        right: true;
+    }
+
+    Rectangle {
         anchors.fill: parent;
-        anchors.leftMargin: 10;
-        anchors.rightMargin: 10;
+        color: theme.surface;
 
-        HWorkspaces {}
+        RowLayout { 
+            id: row;
 
-        Item { Layout.fillWidth: true; }
+            anchors.fill: parent;
+            anchors.leftMargin: 10;
+            anchors.rightMargin: 10;
 
-        HClock {}
+            HWorkspaces {}
 
-        HNotif {
-            wAnchor: root.windowAnchor;
+            Item { Layout.fillWidth: true; }
+
+            HClock {}
+
+            HNotif {
+                wAnchor: root;
+            }
+
+            Item { Layout.fillWidth: true; }
+
+            HSysTray {
+                wAnchor: root;
+            }
+
+            HVolume {}
         }
-
-        Item { Layout.fillWidth: true; }
-
-        HSysTray {
-            wAnchor: root.windowAnchor;
-        }
-
-        HVolume {}
     }
 }
