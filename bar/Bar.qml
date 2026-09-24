@@ -17,8 +17,8 @@ PanelWindow {
     readonly property var settings: SettingsService.get;
     readonly property bool isBottom: settings.shell.bar.position.trim().toLowerCase() === "bottom";
 
-    WlrLayershell.namespace: "roshell-bar";
-    WlrLayershell.layer: WlrLayer.Bottom;
+    WlrLayershell.namespace: "roshell-bar-horizontal";
+    WlrLayershell.layer: WlrLayer.Top;
 
     exclusionMode: ExclusionMode.Normal;
     exclusiveZone: 35;
