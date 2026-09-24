@@ -84,7 +84,8 @@ Singleton {
 
             property JsonObject shell: JsonObject {
                 property JsonObject bar: JsonObject {
-                    property string position: "top";  
+                    property string position: "top";
+                    property bool vertical: false;
 
                     property JsonObject workspaces: JsonObject {
                         property bool automaticallyResize: true;

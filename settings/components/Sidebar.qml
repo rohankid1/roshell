@@ -31,6 +31,17 @@ Rectangle {
     topRightRadius: r;
     bottomRightRadius: r;
 
+    component SettingsBtn: StyledButton {
+        Layout.fillWidth: true;
+        Layout.preferredHeight: 40;
+        buttonColor: theme.primary;
+        hoverColor: theme.primary_container;
+        pressedColor: theme.primary;
+
+        textColor: theme.on_primary;
+        hoverTextColor: theme.on_primary_container;
+    }
+
     ColumnLayout {
         anchors.fill: parent;
         anchors.margins: 10;
@@ -52,49 +63,24 @@ Rectangle {
             Layout.fillHeight: true;
             spacing: 15;
 
-            StyledButton {
-                Layout.fillWidth: true;
-                Layout.preferredHeight: 40;
-
+            SettingsBtn {
                 btnIcon: "settings";
-                buttonColor: theme.primary;
-                hoverColor: theme.primary_container;
-                pressedColor: theme.primary;
-
-                textColor: theme.on_primary;
-                hoverTextColor: theme.on_primary_container;
-                
                 onClicked: WindowState.setPage(WindowState.general);
             }
 
-            StyledButton {
-                Layout.fillWidth: true;
-                Layout.preferredHeight: 40;
-
+            SettingsBtn {
                 btnIcon: "wallpaper";
-                buttonColor: theme.primary;
-                hoverColor: theme.primary_container;
-                pressedColor: theme.primary;
-
-                textColor: theme.on_primary;
-                hoverTextColor: theme.on_primary_container;
-
                 onClicked: WindowState.setPage(WindowState.wallpaper);
             }
 
-            StyledButton {
-                Layout.fillWidth: true;
-                Layout.preferredHeight: 40;
-
+            SettingsBtn {
                 btnIcon: "colors";
-                buttonColor: theme.primary;
-                hoverColor: theme.primary_container;
-                pressedColor: theme.primary;
-
-                textColor: theme.on_primary;
-                hoverTextColor: theme.on_primary_container;
-
                 onClicked: WindowState.setPage(WindowState.color);
+            }
+
+            SettingsBtn {
+                btnIcon: "dock_to_bottom";
+                onClicked: () => WindowState.setPage(WindowState.bar);
             }
 
             Item {

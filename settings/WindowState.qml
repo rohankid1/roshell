@@ -15,13 +15,15 @@ Singleton {
     readonly property string general: "pages/GeneralPage.qml";
     readonly property string wallpaper: "pages/WallpaperPage.qml";
     readonly property string color: "pages/ColorPage.qml";
+    readonly property string bar: "pages/BarPage.qml";
 
     readonly property bool isOnGeneral: activeTab === general;
     readonly property bool isOnWallpaper: activeTab === wallpaper;
     readonly property bool isOnColor: activeTab === color;
+    readonly property bool isOnBar: activeTab === bar;
 
     function setPage(newPage: string) {
-        const a = [general, wallpaper, color];
+        const a = [general, wallpaper, color, bar];
 
         if (a.some(i => i === newPage)) {
             if (activeTab === newPage) return;

@@ -11,7 +11,12 @@ import "settings"
 import "wpicker"
 import "bar"
 
-ShellRoot {    
+ShellRoot {
+    id: root;
+
+    readonly property var settings: SettingsService.get;
+    readonly property bool isBottom: settings.shell.bar.position.trim().toLowerCase() === "bottom";
+
     WallpaperPicker {}
     SettingsWindow {}
 
@@ -33,7 +38,8 @@ ShellRoot {
                 implicitHeight: 50;
 
                 anchors {
-                    top: true;
+                    bottom: root.isBottom;
+                    top: !root.isBottom;
                     left: true;
                     right: true;
                 }
