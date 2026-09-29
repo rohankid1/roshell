@@ -21,12 +21,14 @@ Rectangle {
     property string fontFamily: settings.font.family;
     property string iconFontFamily: settings.font.iconFamily;
 
-    implicitHeight: parent.height * 0.75;
-    implicitWidth: row.width + 20;
+    property bool showIcon: true;
 
     radius: borderRadius;
     color: background;
     border.color: borderColor;
+
+    implicitHeight: row.implicitHeight + 6;
+    implicitWidth: row.implicitWidth + 20;
 
     Behavior on color {
         ColorAnimation { duration: settings.general.animations.colorAnimDuration; }
@@ -41,6 +43,7 @@ Rectangle {
         anchors.centerIn: parent;
 
         Text {
+            visible: root.showIcon;
             text: "schedule";
             color: root.iconColor;
 
@@ -50,14 +53,14 @@ Rectangle {
         }
 
         Text {
-            text: ClockService.format("MMM d, yyyy");
+            text: ClockService.format("hh:mm AP");
             color: root.foreground;
 
             font.family: root.fontFamily;
         }
 
         Text {
-            text: ClockService.format("hh:mm:ss");
+            text: ClockService.format("ddd, dd/MM");
             color: root.foreground;
             horizontalAlignment: Text.AlignHCenter;
 

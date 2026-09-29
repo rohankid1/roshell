@@ -17,14 +17,14 @@ PanelWindow {
     readonly property var settings: SettingsService.get;
     readonly property bool isBottom: settings.shell.bar.position.trim().toLowerCase() === "bottom";
 
-    WlrLayershell.namespace: "roshell-bar-horizontal";
+    WlrLayershell.namespace: "quickshell:roshell-bar-horizontal";
     WlrLayershell.layer: WlrLayer.Top;
 
     exclusionMode: ExclusionMode.Normal;
     exclusiveZone: 35;
 
     color: "transparent";
-    implicitHeight: 50;
+    implicitHeight: 40;
 
     anchors {
         bottom: root.isBottom;
@@ -33,34 +33,69 @@ PanelWindow {
         right: true;
     }
 
+    margins.right: 5;
+    margins.left: 5;
+    margins.top: 5;
+    margins.bottom: 5;
+
     Rectangle {
         anchors.fill: parent;
         color: theme.surface;
+        radius: settings.shell.bar.radius;
 
-        RowLayout { 
+        RowLayout {
             id: row;
 
             anchors.fill: parent;
-            anchors.leftMargin: 10;
-            anchors.rightMargin: 10;
+            anchors.margins: 10;
 
-            HWorkspaces {}
+            Item {
+                Layout.fillWidth: true;
+                Layout.fillHeight: true;
+
+                HWorkspaces {
+                    bg: "transparent";
+                    borderColor: "transparent";
+                    inactiveColor: "transparent";
+                    inactiveBorderColor: "transparent";
+                    activeBorderColor: "transparent";
+                }
+            }
 
             Item { Layout.fillWidth: true; }
-
-            HClock {}
 
             HNotif {
                 wAnchor: root;
+                borderColor: "transparent";
+                background: "transparent";
+            }
+
+            HVolume {
+                background: "transparent";
+                borderColor: "transparent";
             }
 
             Item { Layout.fillWidth: true; }
 
-            HSysTray {
-                wAnchor: root;
+            Item {
+                Layout.fillWidth: true;
+                Layout.fillHeight: true;
+
+                HClock {
+                    anchors.verticalCenter: parent.verticalCenter;
+                    anchors.right: parent.right;
+
+                    background: "transparent";
+                    borderColor: "transparent";
+                    showIcon: false;
+                }
             }
 
-            HVolume {}
+            HSysTray {
+                wAnchor: root;
+                background: "transparent";
+                borderColor: "transparent";
+            }
         }
     }
 }

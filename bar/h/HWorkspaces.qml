@@ -23,11 +23,10 @@ Rectangle {
 
     property real borderRadius: settings.general.borderRadius;
     property real itemSpacing: 8;
-    property real activeHeight: 16;
-    property real inactiveHeight: 12;
 
-    Layout.preferredHeight: parent.height * 0.75;
-    Layout.preferredWidth: rowWs.width + 20;
+    implicitWidth: rowWs.width + 20;
+    implicitHeight: parent.height * 0.75;
+
 
     border.color: borderColor;
     color: bg
@@ -44,7 +43,6 @@ Rectangle {
     RowLayout {
         id: rowWs;
         spacing: root.itemSpacing;
-        anchors.centerIn: parent;
 
         Repeater {
             model: barSettings.workspaces.automaticallyResize ? Hyprland.workspaces : root.settings.workspaces.maxStaticWorkspaces;
@@ -62,10 +60,19 @@ Rectangle {
 
                 color: isActive ? root.activeColor : root.inactiveColor;
                 border.color: isActive ? root.activeBorderColor : root.inactiveBorderColor;
-                radius: root.borderRadius;
 
-                implicitHeight: isActive ? root.activeHeight : root.inactiveHeight;
-                implicitWidth: implicitHeight;
+                implicitWidth: 25;
+                implicitHeight: 25;
+                radius: width / 2;
+
+                Rectangle {
+                    anchors.centerIn: parent;
+
+                    implicitWidth: 5;
+                    implicitHeight: 5;
+                    radius: this.width / 2;
+                    color: isActive ? theme.on_surface : theme.inverse_on_surface;
+                }
 
                 MouseArea {
                     anchors.fill: parent;
