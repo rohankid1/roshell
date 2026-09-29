@@ -87,6 +87,7 @@ Singleton {
                     property string position: "top";
                     property bool vertical: false;
                     property string verticalPosition: "left";
+                    property int radius: 6;
 
                     property JsonObject workspaces: JsonObject {
                         property bool automaticallyResize: true;
